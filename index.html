@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>piggy🐷</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  z-index: 2;
+  color: red;
+  font-size: 40px;
+  text-align: center;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 3s linear forwards; 
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.touch-text {
+  position: absolute;
+  color: green;
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+</style>
+</head>
+<body>
+    <audio id="bgMusic" src="piggy1.mp3" loop></audio>
+<button onclick="toggleMusic()" style="position:absolute; top:10px; right:10px; z-index:10; font-size:20px;">🔊</button>
+
+
+<h1> Oye pandhi <br> Good morning😊</h1>
+
+<script>
+const colors = ["💚","❤️","💜","💝","💞","🤎","❣️","💘","🤍","💕","💖","💗","🥰","😘","🫶","😍","🫰","❤️‍🩹","💛","💌","💙","🤗","😻","💟","💋","😽","🧡"];
+
+const messages = [ "Pandhi 🐷", 
+  "Kukka 🐶", 
+  "Tube Light 💡",  
+  "Bujji💛",
+  "Chitti ",
+  "bangalam😘",
+  "love you rey❤️😘",
+  "i purple you💜",
+  "Saranghae 😘",  
+  "You my fandom 💛",
+"chetha pellow😜😝",
+"My starlight 🌟",     
+  "You my bias 🥰",    
+  "You’re my melody 🎶",
+"You my lightstick 💡",
+];
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+  heart.style.left = Math.random() * (window.innerWidth - 50) + "px";
+  heart.style.fontSize = Math.random() *  100 + 40 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 300);
+
+function showTouchText(x, y) {
+  const txt = document.createElement("div");
+  txt.classList.add("touch-text");
+  txt.innerText = messages[Math.floor(Math.random() * messages.length)];
+  txt.style.left = x + "px";
+  txt.style.top = y + "px";
+  document.body.appendChild(txt);
+
+  setTimeout(() => {
+    txt.style.opacity = 0;
+    setTimeout(() => txt.remove(), 500);
+  }, 3000);
+}
+
+document.addEventListener("click", (e) => showTouchText(e.clientX, e.clientY));
+document.addEventListener("touchstart", (e) => {
+  const touch = e.touches[0];
+  showTouchText(touch.clientX, touch.clientY);
+});
+function toggleMusic() {
+  const music = document.getElementById("bgMusic");
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+
+document.getElementById("bgMusic").volume = 0.2;
+</script>
+
+</body>
+</html>
