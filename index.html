@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>piggy🐷</title>
 <style>
 body {
@@ -21,7 +22,7 @@ h1 {
     transform: translate(-50%, -50%);
   z-index: 2;
   color: red;
-  font-size: 40px;
+  font-size: 28px;
   text-align: center;
 }
 
@@ -86,13 +87,13 @@ function createHeart() {
   heart.classList.add("heart");
   heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
   heart.style.left = Math.random() * (window.innerWidth - 50) + "px";
-  heart.style.fontSize = Math.random() *  100 + 40 + "px";
+  heart.style.fontSize = Math.random() *  30 + 20 + "px";
   document.body.appendChild(heart);
 
   setTimeout(() => heart.remove(), 5000);
 }
 
-setInterval(createHeart, 300);
+setInterval(createHeart, 600);
 
 function showTouchText(x, y) {
   const txt = document.createElement("div");
